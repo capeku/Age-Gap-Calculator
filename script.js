@@ -18,41 +18,51 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  const calculateAge = () => {
-    const today = new Date();
-    const birthDate = new Date(`${monthInput.value}/${dayInput.value}/${yearInput.value}`);
+const calculateAge = () => {
+  const today = new Date();
+  const birthYear = parseInt(yearInput.value, 10);
 
-    if (isNaN(birthDate)) {
-      // Display "--" if the birth date is invalid
-      yearResult.textContent = '--';
-      monthResult.textContent = '--';
-      dayResult.textContent = '--';
-      return;
-    }
+  if (birthYear.toString().padStart(4, '0') !== yearInput.value) {
+    // Display "--" if the birth date is invalid
+    yearResult.textContent = '--';
+    monthResult.textContent = '--';
+    dayResult.textContent = '--';
+    return;
+  }
 
-    const yearDiff = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
-    const dayDiff = today.getDate() - birthDate.getDate();
+  const birthDate = new Date(`${monthInput.value}/${dayInput.value}/${birthYear}`);
 
-    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-      yearDiff--;
-    }
+  if (isNaN(birthDate)) {
+    // Display "--" if the birth date is invalid
+    yearResult.textContent = '--';
+    monthResult.textContent = '--';
+    dayResult.textContent = '--';
+    return;
+  }
 
-    if (monthDiff < 0) {
-      monthDiff += 12;
-    }
+  const yearDiff = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  const dayDiff = today.getDate() - birthDate.getDate();
 
-    if (dayDiff < 0) {
-      const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
-      dayDiff += lastDayOfMonth;
-      monthDiff--;
-    }
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    yearDiff--;
+  }
 
-    // Display "--" if the age is 0
-    yearResult.textContent = yearDiff === 0 ? '--' : yearDiff;
-    monthResult.textContent = monthDiff === 0 ? '--' : monthDiff;
-    dayResult.textContent = dayDiff === 0 ? '--' : dayDiff;
-  };
+  if (monthDiff < 0) {
+    monthDiff += 12;
+  }
+
+  if (dayDiff < 0) {
+    const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+    dayDiff += lastDayOfMonth;
+    monthDiff--;
+  }
+
+  // Display "--" if the age is 0
+  yearResult.textContent = yearDiff === 0 ? '--' : yearDiff;
+  monthResult.textContent = monthDiff === 0 ? '--' : monthDiff;
+  dayResult.textContent = dayDiff === 0 ? '--' : dayDiff;
+};
 
   const form = document.getElementById('ageCalculatorForm');
 
