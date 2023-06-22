@@ -19,7 +19,7 @@
 
   <div class="wrapper">
     <div class="mainCard">
-      <form id="ageCalculatorForm" action="">
+      <form id="ageCalculatorForm" action="" novalidate>
         <div class="dateContainer">
           <div>
             <label for="day">DAY</label>
@@ -31,11 +31,12 @@
             <label for="month">MONTH</label>
             <input type="number" name="month" id="mm" placeholder="MM" pattern="\\d*" minlength="2" maxlength="2"
               required="">
+            <span id="monthError" class="error"></span>
           </div>
           <div>
             <label for="year">YEAR</label>
             <input type="number" name="year" id="yy" required="" />
-            <p>This field is required </p>
+            <span id="yearError" class="error"></span>
           </div>
           <button type="submit">Calculate</button>
         </div>
