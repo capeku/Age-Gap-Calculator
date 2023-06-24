@@ -21,22 +21,22 @@
     <div class="mainCard">
       <form id="ageCalculatorForm" action="" novalidate>
         <div class="dateContainer">
-          <div>
-            <label for="day">DAY</label>
-            <input type="number" name="day" id="dd" placeholder="DD" pattern="\\d*" minlength="2" maxlength="2"
-              required="">
-            <span id="dayError" class="error"></span>
+          <div class="inputContainer">
+            <label for="day" id="dayLabel">DAY</label>
+            <input type="number" inputmode="numeric" name="day" id="dd" placeholder="DD" pattern="\\d*" minlength="2"
+              maxlength="2" required="">
+            <p id="dayError" class="error"></p>
           </div>
-          <div>
-            <label for="month">MONTH</label>
-            <input type="number" name="month" id="mm" placeholder="MM" pattern="\\d*" minlength="2" maxlength="2"
-              required="">
-            <span id="monthError" class="error"></span>
+          <div class="inputContainer">
+            <label for="month" id="monthLabel">MONTH</label>
+            <input type="number" inputmode="numeric" name="month" id="mm" placeholder="MM" pattern="\\d*" minlength="2"
+              maxlength="2" required="">
+            <p id="monthError" class="error"></p>
           </div>
-          <div>
-            <label for="year">YEAR</label>
-            <input type="number" name="year" id="yy" required="" />
-            <span id="yearError" class="error"></span>
+          <div class="inputContainer">
+            <label for="year" id="yearLabel">YEAR</label>
+            <input type="number" inputmode="numeric" name="year" id="yy" required="" placeholder="YYYY" />
+            <p id="yearError" class="error"></p>
           </div>
           <!-- <button type="submit">Calculate</button> -->
         </div>
@@ -50,15 +50,11 @@
       </div>
 
       <div class="resultContainer">
-        <div>
-          <p><span id="ddResult">--</span> &nbsp; years </p>
-        </div>
-        <div>
-          <p><span id="mmResult">--</span> &nbsp; months</p>
-        </div>
-        <div>
-          <p><span id="yyResult">--</span> &nbsp; days</p>
-        </div>
+        <h1><span id="ddResult">--</span> years </h1>
+
+        <h1><span id="mmResult">--</span> months</h1>
+        <h1><span id="yyResult">--</span> days</h1>
+
       </div>
     </div>
   </div>

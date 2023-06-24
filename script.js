@@ -8,13 +8,18 @@ window.addEventListener('DOMContentLoaded', () => {
   const dayError = document.getElementById('dayError');
   const monthError = document.getElementById('monthError');
   const yearError = document.getElementById('yearError');
+  const dayLabel = document.getElementById('dayLabel');
+  const monthLabel = document.getElementById('monthLabel');
+  const yearLabel = document.getElementById('yearLabel');
 
+  // Limit input to two digits
   const enforceTwoDigitInput = (input) => {
-    input.value = input.value.slice(0, 2); // Limit input to two digits
+    input.value = input.value.slice(0, 2); 
   };
 
+  // Limit input to four digits
   const enforceFourDigitInput = (input) => {
-    input.value = input.value.slice(0, 4); // Limit input to four digits
+    input.value = input.value.slice(0, 4); 
   };
 
   const calculateAge = () => {
@@ -29,6 +34,9 @@ window.addEventListener('DOMContentLoaded', () => {
     dayError.textContent = '';
     monthError.textContent = '';
     yearError.textContent = '';
+        dayLabel.classList.remove("errorlabel");
+    monthLabel.classList.remove("errorlabel");
+    yearLabel.classList.remove("errorlabel");
 
     if (isNaN(birthYear) || yearInput.value.length !== 4 || birthYear >= today.getFullYear()) {
       if (yearInput.value === '') {
@@ -37,6 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
         yearError.textContent = 'Must be in the past';
       }
       hasError = true;
+      yearLabel.classList.add("errorlabel");
     }
 
     if (isNaN(birthMonth) || birthMonth < 1 || birthMonth > 12) {
@@ -46,6 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
         monthError.textContent = 'Must be a valid month';
       }
       hasError = true;
+      monthLabel.classList.add("errorlabel");
     }
 
     if (isNaN(birthDay) || birthDay < 1 || birthDay > 31) {
@@ -55,6 +65,7 @@ window.addEventListener('DOMContentLoaded', () => {
         dayError.textContent = 'Must be a valid day';
       }
       hasError = true;
+      dayLabel.classList.add("errorlabel");
     } else {
       // Check for invalid dates (e.g., 31/04/1991)
       const lastDayOfMonth = new Date(birthYear, birthMonth, 0).getDate();
@@ -62,7 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
         dayError.textContent = 'Invalid date';
         hasError = true;
       }
-    }
+    } 
 
     if (hasError) {
       // Display "--" in the result fields
@@ -106,6 +117,40 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   const form = document.getElementById('ageCalculatorForm');
+
+  const addInputActiveClass = (input) => {
+    input.classList.add('input-active');
+  };
+
+  const removeInputActiveClass = (input) => {
+    input.classList.remove('input-active');
+  };
+
+  // ...
+
+  dayInput.addEventListener('focus', () => {
+    addInputActiveClass(dayInput);
+  });
+
+  dayInput.addEventListener('blur', () => {
+    removeInputActiveClass(dayInput);
+  });
+
+  monthInput.addEventListener('focus', () => {
+    addInputActiveClass(monthInput);
+  });
+
+  monthInput.addEventListener('blur', () => {
+    removeInputActiveClass(monthInput);
+  });
+
+  yearInput.addEventListener('focus', () => {
+    addInputActiveClass(yearInput);
+  });
+
+  yearInput.addEventListener('blur', () => {
+    removeInputActiveClass(yearInput);
+  });
 
   dayInput.addEventListener('input', () => {
     enforceTwoDigitInput(dayInput);
