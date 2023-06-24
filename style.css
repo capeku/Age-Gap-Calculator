@@ -24,10 +24,6 @@
   body {
     font-size: 10px;
   }
-
-  .wrapper .mainCard {
-    max-width: 100%;
-  }
 }
 
 /* For Desktop devices */
@@ -41,20 +37,17 @@
   }
 
   .wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   }
 
   .wrapper .mainCard {
     background: hsl(0, 0%, 100%);
     border-radius: 1rem 1rem 4rem 1rem;
     padding: 40px;
-    width: 100%;
-    max-width: 70%;
-    min-width: 200px;
+
   }
 
   .attribution {
