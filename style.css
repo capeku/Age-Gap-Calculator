@@ -33,21 +33,21 @@
     font-family: 'Poppins', sans-serif;
     line-height: 1.7;
     font-size: 13px;
-    height: 100vh;
+    height: 100%;
   }
 
   .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  display: grid;
+  grid-template-columns: .7fr 2fr .7fr;
+  grid-template-rows: .5fr 2fr .5fr;
   }
 
   .wrapper .mainCard {
     background: hsl(0, 0%, 100%);
     border-radius: 1rem 1rem 4rem 1rem;
     padding: 40px;
-
+    grid-row: 2/3;
+    grid-column: 2/3;
   }
 
   .attribution {
@@ -61,8 +61,9 @@
 
   .dateContainer {
     display: flex;
-    max-width: 80%;
+    width: 80%;
   }
+
 
 }
 
@@ -125,14 +126,12 @@ hr {
 .dateContainer .errorlabel {
   color: hsl(0, 100%, 67%);
 }
-.inputContainer{
-  margin-right: 2rem;
-}
 
 input[type="number"]::placeholder {
   color: hsl(0, 1%, 44%); 
 }
 input {
+  margin-right: 2rem;
   font-size: 32px;
   font-weight: 700;
   color: hsl(0, 0%, 8%);
