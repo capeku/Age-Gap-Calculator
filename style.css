@@ -19,12 +19,6 @@
   /* Add additional font variants if available */
 }
 
-/* For Mobile devices */
-@media only screen and (max-width: 375px) {
-  body {
-    font-size: 10px;
-  }
-}
 
 /* For Desktop devices */
 @media only screen and (max-width: 1440px) {
@@ -166,4 +160,24 @@ input:focus {
 
 #ddResult, #mmResult, #yyResult{
   color: hsl(259, 100%, 65%);
+}
+
+
+
+/* For Mobile devices */
+@media(max-width: 375px){
+  .wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    padding: 0 2rem;
+    grid-column-gap: px;
+    grid-row-gap: 0px;
+  }
+
+  .wrapper .mainCard{
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+
 }
